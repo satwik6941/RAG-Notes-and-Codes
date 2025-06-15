@@ -1,3 +1,5 @@
+'''Implementation of a basic keyword search using scikit-learn's TfidfVectorizer and cosine similarity. I made a sample dataset of documents in a list and a user input query.'''
+
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 import numpy as np
