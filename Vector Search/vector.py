@@ -1,3 +1,7 @@
+'''This is a basic vector search implementation, which uses the dataset as a PDF file (a college study material) where the PDF is first loaded and then those are converted into embeddings using sentence transformer and then converted to an array. 
+    Indexing is given according to the array using FAISS which is a fast vector vector search. 
+    Input is given then it is converted into a embeddings and then into an array and searched in the vector database and then the results are printed accordingly.'''
+
 import fitz  # PyMuPDF for PDF handling
 from sentence_transformers import SentenceTransformer
 import numpy as np
