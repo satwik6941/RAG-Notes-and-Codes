@@ -1,3 +1,6 @@
+'''This is an implementation of a hybrid search system using LlamaIndex and groqcloud LLM. The database is 4 pdfs in the data directory.
+It combines vector search, keyword search, and BM25 retrieval methods to provide a comprehensive search experience'''
+
 import os
 from llama_index.core import (
     VectorStoreIndex,           # For creating a vector index
