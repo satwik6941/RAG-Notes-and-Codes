@@ -47,7 +47,7 @@ def hybrid_search(query, top_k=5):
     return all_docs
 
 llm = ChatGroq(
-    model="llama3-70b-8192",  # or "llama3-8b-8192", etc.
+    model="gemma2-9b-it",  # or "llama3-8b-8192", etc.
     api_key = os.getenv('GROQ_API_KEY')  # or set it as an environment variable
 )
 
