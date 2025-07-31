@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plugging Gen AI Into Your Product: The Infographic</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        /* Chosen Theme: Material Design */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #E0F2F7; /* Light background for Material Design */
+            color: #333333; /* Darker text for readability on light background */
+        }
+        .flowchart-step {
+            border: 2px solid #118AB2;
+            background-color: #F0F8FA; /* Lighter background for steps */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            color: #333333; /* Ensure text is dark */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for elevation */
+        }
+        .flowchart-step:hover {
+            transform: translateY(-3px); /* Slightly less aggressive lift */
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* More pronounced shadow on hover */
+        }
+        .flowchart-arrow {
+            color: #06D6A0;
+            font-size: 2rem;
+            line-height: 1;
+        }
+        .card {
+            background-color: #FFFFFF; /* White background for cards */
+            border: 1px solid #E0E0E0; /* Light border for definition */
+            border-radius: 12px; /* Slightly more rounded corners */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Standard Material Design shadow */
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        /* Vibrant color palette from "Energetic & Playful" */
+        .highlight-yellow { color: #FFD166; }
+        .highlight-green { color: #06D6A0; }
+        .highlight-red { color: #FF6B6B; }
+        .highlight-blue { color: #118AB2; }
+
+        /* Adjusting text colors for new light background */
+        .text-gray-300 { color: #555555; }
+        .text-gray-400 { color: #666666; }
+        .text-gray-500 { color: #777777; }
+        .text-gray-600 { color: #4A4A4A; } /* Adjusted for better contrast on light bg */
+        .text-gray-700 { color: #333333; } /* Primary text color */
+        .text-gray-800 { color: #222222; } /* Darkest text for headings/strong elements */
+
+        /* Adjusting code snippet background and text */
+        .bg-black\/20 {
+            background-color: #F5F5F5; /* Lighter background for code snippets */
+            color: #333333; /* Darker text */
+        }
+
+        /* Adjusting result box backgrounds and text for Material Design */
+        .bg-red-900\/30 {
+            background-color: #FFEBEE; /* Lighter red tint */
+            color: #C62828; /* Darker red text */
+            border-color: #EF5350; /* Stronger red border */
+        }
+        .bg-green-900\/30 {
+            background-color: #E8F5E9; /* Lighter green tint */
+            color: #2E7D32; /* Darker green text */
+            border-color: #4CAF50; /* Stronger green border */
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <div class="max-w-7xl mx-auto p-4 sm:p-6 lg:p-8">
+        
+        <header class="text-center my-12 md:my-20">
+            <h1 class="text-4xl md:text-6xl font-black tracking-tight leading-tight">🚀 Plugging <span class="highlight-green">Gen AI</span> into Your Product</h1>
+            <p class="mt-4 text-xl md:text-2xl font-semibold text-gray-700">From Prompts to Production: A Practical Guide for Builders</p>
+            <div class="mt-12 text-2xl md:text-3xl font-bold max-w-3xl mx-auto p-6 rounded-xl card">
+                <p>GenAI Isn't Magic. But It Feels Like It.</p>
+                <p class="text-lg font-normal text-gray-600 mt-4">AI capabilities are rapidly commoditizing, but product integration remains the bottleneck. This guide is for product managers, developers, and startup builders looking to move beyond just *using* AI to actually *building* with it. Let's demystify the core concepts needed to integrate AI into your own applications.</p>
+            </div>
+        </header>
+
+        <main class="space-y-16 md:space-y-24">
+
+            <section id="prompting" class="scroll-mt-20">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold"><span class="highlight-yellow">1.</span> Prompt Engineering: Talking Smart to AI</h2>
+                    <p class="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">A prompt is your instruction to the AI. Like talking to a genie, your outcome depends on how precisely you phrase your wish. Small tweaks in how you ask can lead to vastly different results.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
+                    <div class="p-6 rounded-xl card border-2 border-red-500/50">
+                        <h3 class="text-2xl font-bold flex items-center"><span class="text-3xl mr-3 highlight-red">❌</span>Bad Prompt</h3>
+                        <p class="mt-4 text-lg font-mono p-4 rounded-lg bg-black/20 text-gray-800">"Make me dinner."</p>
+                        <div class="mt-4 p-4 rounded-lg bg-red-900/30">
+                            <p class="font-semibold text-red-700">Result: Vague & Unhelpful</p>
+                            <p class="text-gray-700 mt-2">The AI lacks user preferences, constraints, or intent, leading to an unhelpful response.</p>
+                        </div>
+                    </div>
+                    <div class="p-6 rounded-xl card border-2 border-green-500/50">
+                        <h3 class="text-2xl font-bold flex items-center"><span class="text-3xl mr-3 highlight-green">✅</span>Good Prompt</h3>
+                        <p class="mt-4 text-lg font-mono p-4 rounded-lg bg-black/20 text-gray-800">"Act like a chef and suggest a quick vegetarian recipe using only 3 ingredients."</p>
+                        <div class="mt-4 p-4 rounded-lg bg-green-900/30">
+                            <p class="font-semibold text-green-700">Result: Specific & Actionable</p>
+                            <p class="text-gray-700 mt-2">The AI has a role ("chef"), constraints ("quick", "vegetarian", "3 ingredients"), and can provide a targeted, useful answer.</p>
+                        </div>
+                    </div>
+                </div>
+                 <p class="text-center mt-8 text-xl font-semibold highlight-yellow">Prompting is a skill. You get better with practice.</p>
+            </section>
+
+            <section id="concepts" class="scroll-mt-20 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                     <h2 class="text-3xl md:text-4xl font-bold"><span class="highlight-yellow">2.</span> AI With Arms and Legs: Tool Calling</h2>
+                     <p class="mt-4 text-lg text-gray-600">What if AI could *do* things instead of just talking? With Tool Calling, you describe a tool (like "book a meeting" or "get weather") to the AI. When needed, the AI can automatically call that tool to perform a real-world action.</p>
+                </div>
+                <div class="flex flex-col items-center space-y-4">
+                    <div class="flowchart-step p-4 rounded-lg w-full max-w-sm text-center">
+                        <p class="text-2xl">👤</p>
+                        <p class="font-bold text-lg">You Ask</p>
+                        <p class="text-sm text-gray-700">"Schedule a meeting with the team for Friday at 3pm."</p>
+                    </div>
+                    <div class="flowchart-arrow">↓</div>
+                     <div class="flowchart-step p-4 rounded-lg w-full max-w-sm text-center">
+                        <p class="text-2xl">🧠</p>
+                        <p class="font-bold text-lg">AI Understands & Selects Tool</p>
+                        <p class="text-sm text-gray-700">Identifies the intent and picks the 'Calendar' tool.</p>
+                    </div>
+                     <div class="flowchart-arrow">↓</div>
+                    <div class="flowchart-step p-4 rounded-lg w-full max-w-sm text-center">
+                        <p class="text-2xl">🛠️</p>
+                        <p class="font-bold text-lg">Tool Called</p>
+                        <p class="text-sm text-gray-700">Executes the `scheduleMeeting` function with the correct details.</p>
+                    </div>
+                     <div class="flowchart-arrow">↓</div>
+                     <div class="flowchart-step p-4 rounded-lg w-full max-w-sm text-center bg-green-900/30">
+                        <p class="text-2xl">✅</p>
+                        <p class="font-bold text-lg">Action Completed</p>
+                        <p class="text-sm text-gray-700">The meeting is booked in your calendar.</p>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="data" class="scroll-mt-20">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold"><span class="highlight-yellow">3.</span> The Data Problem: Storing Meanings, Not Just Words</h2>
+                    <p class="mt-4 text-lg text-gray-600 max-w-3xl mx-auto">To effectively leverage AI, we first need to understand the different types of data and how they are stored. Not all data is created equal, especially when it comes to AI's ability to process and understand it.</p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+                    <div class="p-6 rounded-xl card">
+                        <h3 class="text-2xl font-bold mb-4 highlight-blue">Structured Data</h3>
+                        <p class="text-gray-600 mb-4">Highly organized data that conforms to a fixed schema. It's easily searchable and analyzable using traditional tools.</p>
+                        <p class="font-semibold text-gray-600 mb-2">Examples:</p>
+                        <ul class="list-disc list-inside text-gray-700 space-y-1">
+                            <li>SQL databases (tables with rows & columns)</li>
+                            <li>Excel spreadsheets</li>
+                            <li>Customer records (names, addresses, IDs)</li>
+                        </ul>
+                    </div>
+                    <div class="p-6 rounded-xl card">
+                        <h3 class="text-2xl font-bold mb-4 highlight-blue">Unstructured Data</h3>
+                        <p class="text-gray-600 mb-4">Data that does not have a predefined format or organization. It's text-heavy and much harder for traditional systems to process.</p>
+                        <p class="font-semibold text-gray-600 mb-2">Examples:</p>
+                        <ul class="list-disc list-inside text-gray-700 space-y-1">
+                            <li>Emails, chat logs, documents (PDFs, Word files)</li>
+                            <li>Images, audio, video files</li>
+                            <li>Social media posts, web pages</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="text-center my-12">
+                    <h3 class="text-3xl font-bold highlight-yellow">The Challenge: 80% of Enterprise Data is Unstructured</h3>
+                    <p class="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">While structured data is neat, the vast majority of information within organizations exists in unstructured forms. This poses a significant challenge for traditional data management and analysis.</p>
+                </div>
+
+                <div class="p-6 rounded-xl card mb-12">
+                    <h3 class="text-2xl font-bold mb-4 highlight-blue">Data Composition Overview</h3>
+                    <p class="mb-6 text-gray-600">A visual representation of the typical enterprise data landscape.</p>
+                    <div class="chart-container">
+                        <canvas id="dataCompositionChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold"><span class="highlight-yellow">3.1.</span> Storing Unstructured Data: Beyond Traditional Methods</h2>
+                    <p class="mt-4 text-lg text-gray-600 max-w-3xl mx-auto">To unlock the value from unstructured data for AI, we need specialized storage and retrieval mechanisms that understand context and relationships.</p>
+                </div>
+
+                <div class="flex flex-col gap-12 items-center w-full max-w-3xl mx-auto">
+                    <div class="p-6 rounded-xl card w-full bg-red-900/30">
+                        <h3 class="text-2xl font-bold mb-4 highlight-red">The Problem: Keyword-Based Search Falls Short</h3>
+                        <p class="text-gray-700">Traditional search engines primarily rely on exact keyword matches or basic lexical analysis. This means:</p>
+                        <ul class="list-disc list-inside text-gray-700 space-y-1 mt-4">
+                            <li>Searching for "car" won't automatically find documents talking about "automobiles" or "vehicles" unless those exact words are present.</li>
+                            <li>It struggles with synonyms, intent, and contextual understanding.</li>
+                            <li>You get results based on literal word presence, not underlying meaning.</li>
+                        </ul>
+                        <p class="mt-4 text-gray-700">This limitation makes it difficult to retrieve truly relevant information from vast amounts of unstructured data if the exact phrasing isn't used in the query.</p>
+                    </div>
+                    
+                    <div class="p-6 rounded-xl card w-full">
+                        <h3 class="text-2xl font-bold mb-4 highlight-blue">What is a Vector?</h3>
+                        <p class="text-gray-600 mb-4">In the context of AI and unstructured data, a <b class="highlight-yellow">vector</b> is a numerical representation of text, images, audio, or any other data type. Think of it as a point in a high-dimensional space.</p>
+                        <ul class="list-disc list-inside text-gray-700 space-y-1 mt-4">
+                            <li>Each dimension represents a particular semantic feature.</li>
+                            <li>Words or phrases with similar meanings are located closer to each other in this vector space.</li>
+                            <li>This allows AI to understand the *meaning* and *relationship* between pieces of information, even if the exact words aren't the same.</li>
+                        </ul>
+                        <p class="mt-4 text-center text-lg font-semibold text-gray-600">Vectors translate human language into a format AI can mathematically process for similarity.</p>
+                        <p class="mt-4 text-center text-sm text-gray-700">Think of vectors like GPS coordinates in meaning-space. "Car", "automobile", and "vehicle" might all sit near each other — even though they’re different words. Spotify uses vector similarity to recommend songs with similar 'vibes'. You can do the same with documents.</p>
+                    </div>
+
+                    <div class="p-6 rounded-xl card w-full">
+                        <h3 class="text-2xl font-bold mb-4 highlight-green">Solution 1: Vector Databases</h3>
+                        <p class="text-gray-600 mb-4">AI turns text into numerical representations called <b class="highlight-yellow">vectors</b>. Words with similar meanings have similar vectors. A <b class="highlight-yellow">Vector Database</b> stores these vectors, enabling "meaning search" instead of just keyword search, crucial for semantic understanding.</p>
+                        <div class="space-y-3">
+                            <div class="p-3 bg-black/20 text-gray-800 rounded-lg">
+                                <p class="font-mono text-sm">"HR policy on leave"</p>
+                            </div>
+                            <div class="text-center text-2xl highlight-green">≈</div>
+                            <div class="p-3 bg-black/20 text-gray-800 rounded-lg">
+                                <p class="font-mono text-sm">"How many days can I take off?"</p>
+                            </div>
+                        </div>
+                        <p class="mt-4 text-center text-lg font-semibold text-gray-600">These phrases are "semantically close" in a vector space.</p>
+                    </div>
+
+                    <div class="p-6 rounded-xl card w-full bg-red-900/30">
+                        <h3 class="text-2xl font-bold mb-4 highlight-red">Limitation: Isolated Chunks</h3>
+                        <p class="text-gray-700">While vector databases excel at finding similar information, they often store data in isolated "chunks" or documents. This means they might not inherently understand the complex *relationships* between different pieces of information, or the broader context across multiple documents.</p>
+                        <p class="mt-4 text-gray-700">For example, a vector DB might find all documents about "John Doe" and "Project X," but it won't explicitly tell you that "John Doe *leads* Project X" or that "Project X *depends on* Project Y" unless those relationships are explicitly stated within the retrieved text chunks. This is where a more structured approach to relationships becomes vital.</p>
+                    </div>
+
+                    <div class="p-6 rounded-xl card w-full">
+                        <h3 class="text-2xl font-bold mb-4 highlight-green">Solution 2: Knowledge Graphs</h3>
+                        <p class="text-gray-600 mb-4">A <b class="highlight-yellow">Knowledge Graph</b> represents information as a network of interconnected entities (nodes) and their relationships (edges). It extracts facts and relationships from unstructured data, providing rich context and addressing the limitations of isolated chunks by explicitly mapping connections.</p>
+                        <p class="font-semibold text-gray-600 mb-2">Benefits:</p>
+                        <ul class="list-disc list-inside text-gray-700 space-y-1">
+                            <li>Uncovers hidden relationships</li>
+                            <li>Enables complex, multi-hop queries</li>
+                            <li>Provides semantic context for AI</li>
+                        </ul>
+                        <div class="mt-4 flex flex-col items-center">
+                            <div class="p-3 bg-black/20 text-gray-800 rounded-lg text-center"><p class="text-sm">Person (Node)</p></div>
+                            <div class="text-center text-xl highlight-green">↓ has_skill ↓</div>
+                            <div class="p-3 bg-black/20 text-gray-800 rounded-lg text-center"><p class="text-sm">"Python" (Node)</p></div>
+                            <p class="mt-2 text-sm text-gray-700">Example: "Alice has_skill Python"</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="rag" class="scroll-mt-20">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold"><span class="highlight-yellow">4.</span> RAG: Giving AI Your Company's Brain</h2>
+                    <p class="mt-4 text-lg text-gray-600 max-w-3xl mx-auto"><b class="highlight-green">Retrieval-Augmented Generation (RAG)</b> is how you make AI smart about *your* specific data. Instead of asking the AI directly, you first retrieve relevant info from your Vector DB and give it to the AI as context. While powerful for factual retrieval, remember that RAG relies on the base model's inherent capabilities and doesn't teach new behaviors or tones directly.</p>
+                    <p class="mt-6 text-xl font-semibold highlight-yellow">It's like handing a student notes right before an exam.</p>
+                </div>
+                <div class="flex flex-col items-center space-y-4">
+                    <div class="flowchart-step p-4 rounded-lg w-full max-w-xl text-center">
+                        <p class="text-2xl">🧑</p>
+                        <p class="font-bold text-lg">Question</p><p class="text-sm text-gray-700">User asks about a company-specific topic.</p>
+                    </div>
+                    <div class="flowchart-arrow">↓</div>
+                    <div class="flowchart-step p-4 rounded-lg w-full max-w-xl text-center">
+                        <p class="text-2xl">🔍</p>
+                        <p class="font-bold text-lg">Search Vector DB</p><p class="text-sm text-gray-700">Finds relevant documents/text chunks.</p>
+                    </div>
+                    <div class="flowchart-arrow">↓</div>
+                    <div class="flowchart-step p-4 rounded-lg w-full max-w-xl text-center">
+                        <p class="text-2xl">📄</p>
+                        <p class="font-bold text-lg">Retrieve Relevant Docs</p><p class="text-sm text-gray-700">"Here is the context from our knowledge base..."</p>
+                    </div>
+                    <div class="flowchart-arrow">↓</div>
+                    <div class="flowchart-step p-4 rounded-lg w-full max-w-xl text-center">
+                        <p class="text-2xl">🧠</p>
+                        <p class="font-bold text-lg">Prompt AI with Context</p><p class="text-sm text-gray-700">"Using these docs, answer the user's question."</p>
+                    </div>
+                    <div class="flowchart-arrow">↓</div>
+                    <div class="flowchart-step p-4 rounded-lg w-full max-w-xl text-center bg-green-900/30">
+                        <p class="text-2xl">✅</p>
+                        <p class="font-bold text-lg">Contextual Answer</p><p class="text-sm text-gray-700">The AI provides a factual, relevant response.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="use-cases" class="scroll-mt-20">
+                <div class="text-center mb-12">
+                     <h2 class="text-3xl md:text-4xl font-bold">🏗️ Real-World AI Use Cases: Putting the Stack to Work</h2>
+                    <p class="mt-4 text-lg text-gray-600 max-w-3xl mx-auto">By combining these concepts, you can build powerful, end-to-end AI features. Here are three real-world examples and a future vision.</p>
+                </div>
+                <div class="flex flex-col gap-12 items-center w-full max-w-3xl mx-auto">
+                    <div class="p-6 rounded-xl card w-full">
+                        <h3 class="text-2xl font-bold mb-6 text-center highlight-blue">App 1: Chat with Any Website</h3>
+                        <div class="flex flex-col items-center space-y-4">
+                           <div class="flowchart-step p-3 w-full text-center"><p><b>Input:</b> Website URL</p></div>
+                           <div class="flowchart-arrow">↓</div>
+                           <div class="flowchart-step p-3 w-full text-center"><p><b>Crawl & Scrape:</b> Public links & content</p></div>
+                           <div class="flowchart-arrow">↓</div>
+                           <div class="flowchart-step p-3 w-full text-center"><p><b>Chunk & Embed:</b> Documents to vectors</p></div>
+                           <div class="flowchart-arrow">↓</div>
+                           <div class="flowchart-step p-3 w-full text-center"><p><b>Store:</b> Vector DB (Query Routing)</p></div>
+                           <div class="flowchart-arrow">↓</div>
+                           <div class="flowchart-step p-3 w-full text-center"><p><b>Retrieve:</b> RAG (HyDE)</p></div>
+                           <div class="flowchart-arrow">↓</div>
+                           <div class="flowchart-step p-3 w-full text-center bg-green-900/30"><p><b>Output:</b> Chatbot Response + Source</p></div>
+                        </div>
+                        <div class="mt-6 text-sm text-gray-700">
+                            <p class="font-bold highlight-yellow">Stack Layers Used:</p>
+                            <ul class="list-disc list-inside ml-4">
+                                <li>Vector DB ✅</li>
+                                <li>RAG ✅</li>
+                                <li>Tool Calling ❌</li>
+                                <li>Finetuning ❌</li>
+                            </ul>
+                        </div>
+                    </div>
+                     <div class="p-6 rounded-xl card w-full">
+                        <h3 class="text-2xl font-bold mb-6 text-center highlight-blue">App 2: Ingenium: AI Hiring Platform</h3>
+                        <div class="flex flex-col items-center space-y-4">
+                           <div class="flowchart-step p-3 w-full text-center"><p><b>Recruiter:</b> Describe ideal hire</p></div>
+                           <div class="flowchart-arrow">↓</div>
+                           <div class="flowchart-step p-3 w-full text-center"><p><b>Candidate:</b> Upload Resume</p></div>
+                           <div class="flowchart-arrow">↓</div>
+                           <div class="flowchart-step p-3 w-full text-center"><p><b>Process:</b> Resume Parsing + Vector Search</p></div>
+                           <div class="flowchart-arrow">↓</div>
+                           <div class="flowchart-step p-3 w-full text-center"><p><b>AI Chat Search:</b> Tailored shortlists</p></div>
+                           <div class="flowchart-arrow">↓</div>
+                           <div class="flowchart-step p-3 w-full text-center bg-green-900/30"><p><b>Result:</b> Relevant opportunities found</p></div>
+                        </div>
+                        <div class="mt-6 text-sm text-gray-700">
+                            <p class="font-bold highlight-yellow">Stack Layers Used:</p>
+                            <ul class="list-disc list-inside ml-4">
+                                <li>Vector DB ✅</li>
+                                <li>RAG ✅</li>
+                                <li>Tool Calling ❌</li>
+                                <li>Finetuning ❌</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="p-6 rounded-xl card w-full">
+                        <h3 class="text-2xl font-bold mb-6 text-center highlight-blue">App 3: Intelligent Agent Support</h3>
+                        <div class="flex flex-col items-center space-y-4">
+                           <div class="flowchart-step p-3 w-full text-center"><p><b>User Query:</b> "Where is my latest order?"</p></div>
+                           <div class="flowchart-arrow">↓</div>
+                           <div class="flowchart-step p-3 w-full text-center"><p><b>LLM Routes:</b> Based on intent</p></div>
+                           <div class="flowchart-arrow">↓</div>
+                           <div class="flowchart-step p-3 w-full text-center"><p><b>Tool Calling:</b> `fetchOrders()` API</p></div>
+                           <div class="flowchart-arrow">↓</div>
+                           <div class="flowchart-step p-3 w-full text-center"><p><b>Get Data:</b> From existing APIs</p></div>
+                           <div class="flowchart-arrow">↓</div>
+                           <div class="flowchart-step p-3 w-full text-center bg-green-900/30"><p><b>Response:</b> Natural language order status</p></div>
+                        </div>
+                        <div class="mt-6 text-sm text-gray-700">
+                            <p class="font-bold highlight-yellow">Stack Layers Used:</p>
+                            <ul class="list-disc list-inside ml-4">
+                                <li>Tool Calling ✅</li>
+                                <li>RAG ✅ (for initial context/policy lookup)</li>
+                                <li>Workflow Logic ✅</li>
+                                <li>Finetuning ❌</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="workflows" class="scroll-mt-20">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold"><span class="highlight-yellow">6.</span> Orchestrating AI: The Power of Workflows</h2>
+                    <p class="mt-4 text-lg text-gray-600 max-w-3xl mx-auto">Building truly intelligent AI applications isn't just about individual components; it's about chaining them together into seamless, dynamic workflows. These workflows allow AI to handle complex tasks by executing a series of steps, making decisions, and interacting with various systems.</p>
+                </div>
+                <div class="flex flex-col items-center space-y-6 max-w-xl mx-auto">
+                    <div class="flowchart-step p-6 rounded-xl w-full text-center">
+                        <p class="text-2xl">💡</p>
+                        <p class="font-bold text-lg">User Intent</p>
+                        <p class="text-sm text-gray-700">What does the user want to achieve?</p>
+                    </div>
+                    <div class="flowchart-arrow">↓</div>
+                    <div class="flowchart-step p-6 rounded-xl w-full text-center">
+                        <p class="text-2xl">🔄</p>
+                        <p class="font-bold text-lg">RAG & Knowledge Retrieval</p>
+                        <p class="text-sm text-gray-700">Gather relevant context from internal data.</p>
+                    </div>
+                    <div class="flowchart-arrow">↓</div>
+                    <div class="flowchart-step p-6 rounded-xl w-full text-center">
+                        <p class="text-2xl">🧠</p>
+                        <p class="font-bold text-lg">AI Reasoning & Decision</p>
+                        <p class="text-sm text-gray-700">Analyze context, decide next action (e.g., answer, call tool).</p>
+                    </div>
+                    <div class="flowchart-arrow">↓</div>
+                    <div class="flowchart-step p-6 rounded-xl w-full text-center">
+                        <p class="text-2xl">🛠️</p>
+                        <p class="font-bold text-lg">Tool Execution</p>
+                        <p class="text-sm text-gray-700">Perform actions via APIs (e.g., fetch data, update records).</p>
+                    </div>
+                    <div class="flowchart-arrow">↓</div>
+                    <div class="flowchart-step p-6 rounded-xl w-full text-center bg-green-900/30">
+                        <p class="text-2xl">✅</p>
+                        <p class="font-bold text-lg">Dynamic Response/Action</p>
+                        <p class="text-sm text-gray-700">Tailored output or completed task.</p>
+                    </div>
+                </div>
+                <p class="text-center mt-8 text-xl font-semibold highlight-yellow">Workflows enable AI to move beyond simple Q&A to complex problem-solving.</p>
+            </section>
+
+            <section id="finetuning" class="scroll-mt-20">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold"><span class="highlight-yellow">7.</span> Beyond RAG: Finetuning for Nuance</h2>
+                    <p class="mt-4 text-lg text-gray-600 max-w-3xl mx-auto">While RAG excels at providing factual, contextual answers, there are scenarios where it might fall short, especially when it comes to specific behaviors, tone, or highly nuanced responses.</p>
+                </div>
+                <div class="flex flex-col gap-12 items-center w-full max-w-3xl mx-auto">
+                    <div class="p-6 rounded-xl card w-full bg-red-900/30">
+                        <h3 class="text-2xl font-bold mb-4 highlight-red">Where RAG Falls Short: Behavioral Nuance</h3>
+                        <p class="text-gray-700">RAG is superb for retrieving and summarizing factual information. However, it relies on the base model's inherent understanding and generation capabilities. It might struggle with:</p>
+                        <ul class="list-disc list-inside text-gray-700 space-y-1 mt-4">
+                            <li>Maintaining a very specific brand voice or tone consistently.</li>
+                            <li>Generating responses that require complex, multi-step reasoning *beyond* what's directly in the retrieved documents.</li>
+                            <li>Adapting to unique conversational patterns or user behaviors not covered by general training data.</li>
+                            <li>Reducing "hallucinations" in very specific, critical domains where absolute factual accuracy and a particular response style are paramount.</li>
+                        </ul>
+                        <p class="mt-4 text-gray-700">In essence, RAG provides the *what*, but sometimes you need to refine the *how* the AI responds.</p>
+                    </div>
+
+                    <div class="p-6 rounded-xl card w-full">
+                        <h3 class="text-2xl font-bold mb-4 highlight-green">Solution: Finetuning</h3>
+                        <p class="text-gray-600 mb-4"><b class="highlight-yellow">Finetuning</b> involves taking a pre-trained large language model and further training it on a smaller, highly specific dataset. This process adapts the model's weights to better understand and generate text aligned with your unique domain, style, or behavioral requirements.</p>
+                        <p class="font-semibold text-gray-600 mb-2">Benefits of Finetuning:</p>
+                        <ul class="list-disc list-inside text-gray-700 space-y-1">
+                            <li>Achieve a highly specific brand voice and tone.</li>
+                            <li>Improve performance on niche tasks or jargon.</li>
+                            <li>Reduce factual errors (hallucinations) in specific contexts.</li>
+                            <li>Generate more concise or verbose responses as needed.</li>
+                            <li>Enhance model efficiency for certain tasks.</li>
+                        </ul>
+                        <div class="mt-4 flex flex-col items-center">
+                            <div class="p-3 bg-black/20 text-gray-800 rounded-lg text-center"><p class="text-sm">Pre-trained LLM</p></div>
+                            <div class="text-center text-xl highlight-green">↓ + Your Specific Data ↓</div>
+                            <div class="p-3 bg-black/20 text-gray-800 rounded-lg text-center"><p class="text-sm">Finetuned LLM</p></div>
+                            <p class="mt-2 text-sm text-gray-700">Tailoring AI for precise behavior.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="starter-stack" class="scroll-mt-20">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold"><span class="highlight-yellow">8.</span> Suggested AI Builder's Stack</h2>
+                    <p class="mt-4 text-lg text-gray-600 max-w-3xl mx-auto">Ready to start building? Here's a common technology stack to get you going:</p>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="p-6 rounded-xl text-center card">
+                        <h3 class="text-xl font-bold mt-4 highlight-blue">Frontend</h3>
+                        <p class="mt-2 text-gray-700">React / Next.js</p>
+                    </div>
+                    <div class="p-6 rounded-xl text-center card">
+                        <h3 class="text-xl font-bold mt-4 highlight-blue">Backend</h3>
+                        <p class="mt-2 text-gray-700">Node.js or Python</p>
+                    </div>
+                    <div class="p-6 rounded-xl text-center card">
+                        <h3 class="text-xl font-bold mt-4 highlight-blue">LLM Provider</h3>
+                        <p class="mt-2 text-gray-700">OpenAI / Anthropic / Google Gemini</p>
+                    </div>
+                    <div class="p-6 rounded-xl text-center card">
+                        <h3 class="text-xl font-bold mt-4 highlight-blue">Vector DB</h3>
+                        <p class="mt-2 text-gray-700">Pinecone, Weaviate, Qdrant</p>
+                    </div>
+                    <div class="p-6 rounded-xl text-center card">
+                        <h3 class="text-xl font-bold mt-4 highlight-blue">Orchestration</h3>
+                        <p class="mt-2 text-gray-700">LangChain, LlamaIndex, or plain code</p>
+                    </div>
+                    <div class="p-6 rounded-xl text-center card">
+                        <h3 class="text-xl font-bold mt-4 highlight-blue">Infrastructure (Optional)</h3>
+                        <p class="mt-2 text-gray-700">Vercel, Railway, AWS</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="recap" class="scroll-mt-20">
+                 <div class="text-center mb-12">
+                     <h2 class="text-3xl md:text-4xl font-bold">Your AI Builder's Toolkit</h2>
+                    <p class="mt-4 text-lg text-gray-600 max-w-3xl mx-auto">You now know the 4 core concepts for building with Gen AI.</p>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="p-6 rounded-xl text-center card">
+                        <p class="text-5xl">🗨️</p>
+                        <h3 class="text-xl font-bold mt-4">Prompting</h3>
+                        <p class="mt-2 text-gray-700">How you talk to AI.</p>
+                    </div>
+                     <div class="p-6 rounded-xl text-center card">
+                        <p class="text-5xl">🛠️</p>
+                        <h3 class="text-xl font-bold mt-4">Tool Calling</h3>
+                        <p class="mt-2 text-gray-700">How AI takes action.</p>
+                    </div>
+                     <div class="p-6 rounded-xl text-center card">
+                        <p class="text-5xl">💾</p>
+                        <h3 class="text-xl font-bold mt-4">Vector DB</h3>
+                        <p class="mt-2 text-gray-700">How AI remembers things.</p>
+                    </div>
+                     <div class="p-6 rounded-xl text-center card">
+                        <p class="text-5xl">🔄</p>
+                        <h3 class="text-xl font-bold mt-4">RAG</h3>
+                        <p class="mt-2 text-gray-700">How AI uses your data.</p>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <footer class="text-center my-20 md:my-32">
+            <div class="max-w-4xl mx-auto p-8 rounded-xl card border-2 border-yellow-500/50">
+                <p class="text-3xl md:text-4xl font-bold leading-tight highlight-yellow">“AI won’t replace you —<br>but someone using AI might.”</p>
+            </div>
+            <p class="mt-8 text-xl text-gray-600">Go try building something. Start small. Ask better questions.</p>
+            <p class="mt-2 text-lg text-gray-700">Try building a chatbot over your Notion notes or resume. You’ll learn prompting, RAG, and vector search in one shot.</p>
+        </footer>
+
+    </div>
+
+    <script>
+        const wrapLabel = (str, maxWidth) => {
+            if (str.length <= maxWidth) {
+                return str;
+            }
+            const words = str.split(' ');
+            const lines = [];
+            let currentLine = '';
+            words.forEach(word => {
+                if ((currentLine + ' ' + word).trim().length > maxWidth) {
+                    lines.push(currentLine.trim());
+                    currentLine = word;
+                } else {
+                    currentLine = (currentLine + ' ' + word).trim();
+                }
+            });
+            if (currentLine) {
+                lines.push(currentLine.trim());
+            }
+            return lines;
+        };
+        
+        const originalLabels = [
+            'Unstructured Data (Emails, Docs, Chats)',
+            'Structured Data (Tables, Records)'
+        ];
+
+        const processedLabels = originalLabels.map(label => wrapLabel(label, 16));
+
+        const dataCompositionCtx = document.getElementById('dataCompositionChart').getContext('2d');
+        const dataCompositionChart = new Chart(dataCompositionCtx, {
+            type: 'doughnut',
+            data: {
+                labels: processedLabels,
+                datasets: [{
+                    label: 'Data Composition',
+                    data: [80, 20],
+                    backgroundColor: [
+                        '#118AB2', 
+                        '#06D6A0'
+                    ],
+                    borderColor: '#E0F2F7', /* Changed to match new background */
+                    borderWidth: 4,
+                    hoverOffset: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            color: '#333333', /* Changed for readability */
+                            font: {
+                                size: 14
+                            },
+                            boxWidth: 20,
+                            padding: 20,
+                            generateLabels: function(chart) {
+                                const original = Chart.defaults.plugins.legend.labels.generateLabels;
+                                const labels = original.call(this, chart);
+                                labels.forEach(label => {
+                                    const labelText = chart.data.labels[label.index];
+                                    if (Array.isArray(labelText)) {
+                                        label.text = labelText.join(' ');
+                                    }
+                                });
+                                return labels;
+                            }
+                        }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            title: function(tooltipItems) {
+                                const item = tooltipItems[0];
+                                let label = item.chart.data.labels[item.dataIndex];
+                                if (Array.isArray(label)) {
+                                  return label.join(' ');
+                                }
+                                return label;
+                            }
+                        },
+                        bodyFont: {
+                            size: 14,
+                        },
+                        titleFont: {
+                            size: 16,
+                            weight: 'bold',
+                        },
+                        padding: 12,
+                        cornerRadius: 8,
+                        displayColors: true,
+                    }
+                },
+                cutout: '60%'
+            }
+        });
+    </script>
+</body>
+</html>
